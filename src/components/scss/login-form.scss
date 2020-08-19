@@ -1,0 +1,83 @@
+@import '~@carbon/type/scss/type';
+@import '~carbon-components/scss/globals/scss/spacing';
+@import '~@carbon/themes/scss/themes';
+.login-form{
+  background: #ffffff;
+
+  .bx--tooltip__trigger.bx--tooltip--bottom.bx--tooltip--align-center .bx--assistive-text{
+    transform: translate(-80%, 100%);
+  }
+  @include carbon--breakpoint('md') {
+    // padding-left: 2.5rem;
+    // padding-top: 142px;
+  }
+  .fields-container{
+    padding: $carbon--spacing-05 0 $carbon--spacing-08;
+    @include carbon--breakpoint('md') {
+      padding: $carbon--spacing-05 $carbon--spacing-05 $carbon--spacing-08;
+    }
+  }
+  .heading-container{
+    margin-top: .5rem;
+    margin-bottom: $spacing-05;
+    padding-bottom: $spacing-08;
+    border-bottom: 1px solid $active-ui;
+    .heading{
+      @include carbon--type-style('productive-heading-04');
+      //font-weight: 400;
+      span{
+        font-weight: 600;
+      }
+    }
+  }
+  form{
+    .bx--text-input__field-outer-wrapper{
+      width: 100%;
+    }
+    .bx--text-input-wrapper{
+      margin-bottom: $spacing-05
+    }
+    .bx--label, .bx--tooltip__label{
+      font-size: carbon--rem(14px);
+    }
+    .submit-button{
+      width: 100%;
+      max-width: 100%;
+      div{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      @include carbon--breakpoint('md') {
+        height: carbon--rem(68px);
+      }
+    }
+    .submit-loader{
+      @include carbon--breakpoint('md') {
+        height: carbon--rem(68px);
+      }
+    }
+    .remember-me-wrapper{
+      margin-top: $spacing-03;
+    }
+
+    // .login-as{
+      //margin-bottom: $spacing-05;
+    // }
+    .bx--label[for=username],
+    .bx--label[for=password]{
+      width: 100%;
+      .forgot-link{
+        font-size: .75rem;
+        float: right;
+      }
+    }
+    .select-field{
+      margin-bottom: 1rem;
+    }
+  }
+  .body-01{
+    @include carbon--type-style('body-long-01');
+  }
+}

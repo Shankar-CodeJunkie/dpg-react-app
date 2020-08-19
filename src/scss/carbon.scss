@@ -1,0 +1,14 @@
+$feature-flags: (
+        grid-columns-16: true,
+);
+@import '~@carbon/themes/scss/themes';
+// $carbon--theme: $carbon--theme--g100;
+// Use the gray 10 theme
+@include carbon--theme();
+//@import '~carbon-components/scss/globals/scss/css--body';
+//@import "~carbon-components/scss/globals/scss/layout";
+//@import "~carbon-components/scss/components/text-input/text-input";
+//@import "~carbon-components/scss/globals/grid/grid";
+
+@import '~carbon-components/scss/globals/scss/styles';
+

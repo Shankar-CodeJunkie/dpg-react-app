@@ -1,0 +1,73 @@
+@import '~@carbon/type/scss/font-family';
+@import '~@carbon/type/scss/type';
+@import '~carbon-components/scss/globals/scss/spacing';
+@import '~@carbon/themes/scss/themes';
+$carbon--theme: $carbon--theme--g10;
+@include carbon--theme();
+
+.outer{
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  @include carbon--breakpoint('md') {
+    background-color: $ui-background;
+  }
+}
+.middle{
+  display: table-cell;
+  vertical-align: top;
+  @include carbon--breakpoint('md') {
+    vertical-align: middle;
+  }
+}
+.inner{
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  max-width: 530px;
+  width: calc(100% - 40px);
+  //padding: $carbon--spacing-05;
+  margin-bottom: 28px;
+  min-width: 320px;
+  min-height: 338px;
+  overflow: hidden;
+}
+.login-container{
+  // padding-top: 80px;
+  // max-width: 31rem;
+  height: 100%;
+  @include carbon--breakpoint('md') {
+    margin: auto;
+    //padding: 0;
+  }
+  > .bx--row{
+    height: 100%;
+  }
+  .form-area{
+    height: 100%;
+    //padding-top: 80px;
+    @include carbon--breakpoint('md') {
+      //padding-right: 1.5rem;
+      //padding-top: 142px;
+    }
+    @include carbon--breakpoint('lg') {
+      //padding-right: 2.5rem;
+    }
+  }
+  .help-link{
+    @include carbon--type-style('body-long-01');
+    //margin-top: $spacing-08;
+    padding-top: $spacing-05;
+    //border-top: 1px solid $active-ui;
+  }
+  .logo{
+    margin-bottom: $spacing-03;
+    svg.logo{
+      fill: white;
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+}

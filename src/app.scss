@@ -1,0 +1,19 @@
+// @import 'carbon-components/scss/globals/scss/styles.scss';
+
+@import "scss/carbon";
+html, body, #login-root-container, .app-container{
+  height: 100%;
+}
+.app-container{
+  svg.outer-icon-fill {
+    fill: white;
+  }
+}
+.outer{
+  display: table;
+  position: absolute;
+}
+.middle{
+  display: table-cell;
+  vertical-align: middle;
+}
