@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import {
-  BrowserRouter as Router,
+  Router,
   Switch,
   Route
 } from "react-router-dom";
@@ -10,11 +10,10 @@ import LoginContainer from './components/LoginContainer';
 import { Loading } from 'carbon-components';
 import S2IContainer from './components/S2IContainer';
 import PushImageContainer from './components/PushImageContainer';
-// import history from "./history";
-
+import history from "./history";
 function App() {
   return (
-    <Router>
+    <Router history={history}>
       <div className="app-container">
         <Suspense fallback={<Loading />}>
           {/* <LoginContainer /> */}
@@ -24,10 +23,10 @@ function App() {
             <Route exact path="/">
               <LoginContainer />
             </Route>
-            <Route path="/buildimage">
+            <Route exact path="/buildimage">
               <S2IContainer />
             </Route>
-            <Route path="/pushimage">
+            <Route exact path="/pushimage">
               <PushImageContainer />
             </Route>
           </Switch>

@@ -8,20 +8,39 @@ import {
     RadioButtonGroup
 } from 'carbon-components-react';
 import './scss/login-form.scss'
-
+// import { useHistory } from 'react-router-dom';
 // import Cookies from 'universal-cookie';
-
+import { withRouter } from 'react-router-dom';
+import { loginByCred, loginByToken } from '../services/api.services';
 export class LoginForm extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             spinner: false,
             submitting: false,
-            showType: "credentials"
+            showType: "credentials",
+            cluster_url: "https://api.amocpdev.os.fyre.ibm.com:6443",
+            username: "kubeadmin",
+            password: "sLhMi-UuL3P-QUdy7-mipBg",
+            token: "umtIY8j5JxR4epPhdgQYLjgghmZRIq6NtgyjQoXx69g"
         };
         this.form = React.createRef();
         this.submitForm = this.submitForm.bind(this);
         this.changeType = this.changeType.bind(this);
+
+        this.usernameInput = null;
+        this.setUsernameInputRef = element => {
+            this.usernameInput = element;
+        };
+        this.passwordInput = null;
+        this.setPasswordInputRef = element => {
+            this.passwordInput = element;
+        };
+        this.cluster_url = React.createRef();
+        this.username = React.createRef();
+        this.password = React.createRef();
+        this.token = React.createRef();
+
     }
     componentDidMount() {
 
@@ -36,14 +55,47 @@ export class LoginForm extends PureComponent {
     }
     submitForm(event) {
         event.preventDefault();
-
-        // this.props.history.push("/buildimage");
-
+        this.setState({
+            spinner: true
+        })
+        let formData = {}
+        if (this.state.showType === 'credentials') {
+            formData = {
+                cluster_url: this.cluster_url.current.value,
+                username: this.username.current.value,
+                password: this.password.current.value
+            }
+            loginByCred(formData).then((res) => {
+                this.props.history.push("/buildimage");
+            }).catch((e) => {
+                this.setState({
+                    spinner: false
+                })
+                console.log(e)
+            });
+        } else if (this.state.showType === 'token') {
+            formData = {
+                cluster_url: this.cluster_url.current.value,
+                token: this.token.current.value
+            }
+            loginByToken(formData).then((res) => {
+                this.props.history.push("/buildimage");
+            }).catch((e) => {
+                this.setState({
+                    spinner: false
+                })
+                console.log(e)
+            });
+        }
     }
     render() {
         const {
             submitting,
-            showType
+            showType,
+            cluster_url,
+            username,
+            password,
+            token
         } = this.state;
         return (
             <div className={`login-form`}>
@@ -67,6 +119,8 @@ export class LoginForm extends PureComponent {
                                 type={`text`}
                                 labelText={'Cluster URL'}
                                 disabled={submitting}
+                                ref={this.cluster_url}
+                                defaultValue={cluster_url}
                             />
                             <RadioButtonGroup
                                 name="cred_token"
@@ -94,22 +148,27 @@ export class LoginForm extends PureComponent {
                                         type={`text`}
                                         labelText={'Username'}
                                         disabled={submitting}
+                                        ref={this.username}
+                                        defaultValue={username}
                                     />
                                     <TextInput.PasswordInput
                                         id={`password`}
                                         name={`password`}
                                         labelText={'Password'}
                                         disabled={submitting}
+                                        ref={this.password}
+                                        defaultValue={password}
                                     />
                                 </>
                             }
                             {showType === 'token' &&
-                                <TextInput
+                                <TextInput.PasswordInput
                                     id={`token`}
                                     name={`token`}
-                                    type={`text`}
                                     labelText={'Token'}
                                     disabled={submitting}
+                                    ref={this.token}
+                                    defaultValue={token}
                                 />
                             }
                         </FormGroup>
@@ -131,4 +190,4 @@ export class LoginForm extends PureComponent {
     }
 }
 
-export default LoginForm
+export default withRouter(LoginForm)

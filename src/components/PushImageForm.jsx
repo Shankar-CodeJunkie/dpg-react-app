@@ -6,6 +6,8 @@ import {
     FormGroup
 } from 'carbon-components-react';
 import './scss/login-form.scss'
+import { withRouter } from 'react-router-dom';
+import { pushImage } from '../services/api.services';
 
 // import Cookies from 'universal-cookie';
 
@@ -14,10 +16,13 @@ export class PushImageForm extends PureComponent {
         super(props);
         this.state = {
             spinner: false,
-            submitting: false
+            submitting: false,
+            imageName: 'dpg-node-hello',
+            project_name: 'dpg-demo'
         };
         this.form = React.createRef();
         this.submitForm = this.submitForm.bind(this);
+        this.project_name = React.createRef();
     }
     componentDidMount() {
         // this.preFillData();
@@ -27,12 +32,30 @@ export class PushImageForm extends PureComponent {
 
     }
     submitForm(event) {
-
-
+        event.preventDefault();
+        this.setState({
+            spinner: true
+        })
+        let formData = {
+            imageName: this.state.imageName,
+            project: this.project_name.current.value
+        }
+        pushImage(formData).then((res) => {
+            this.setState({
+                spinner: false
+            })
+            // this.props.history.push("/pushimage");
+        }).catch((e) => {
+            this.setState({
+                spinner: false
+            })
+            console.log(e)
+        });
     }
     render() {
         const {
-            submitting
+            submitting,
+            project_name
         } = this.state;
         return (
             <div className={`login-form`}>
@@ -56,6 +79,8 @@ export class PushImageForm extends PureComponent {
                                 type={`text`}
                                 labelText={'Project Name'}
                                 disabled={submitting}
+                                ref={this.project_name}
+                                defaultValue={project_name}
                             />
                         </FormGroup>
                         <Button type="submit" className="some-class" >
@@ -76,4 +101,4 @@ export class PushImageForm extends PureComponent {
     }
 }
 
-export default PushImageForm
+export default withRouter(PushImageForm)

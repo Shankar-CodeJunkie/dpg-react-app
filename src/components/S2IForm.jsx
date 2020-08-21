@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { withRouter } from 'react-router-dom';
 import {
     Button,
     RadioButton,
@@ -10,6 +11,7 @@ import {
     SelectItem,
 } from 'carbon-components-react';
 import './scss/login-form.scss'
+import { buildImageByWorkspace, buildImageByGit } from '../services/api.services';
 
 // import Cookies from 'universal-cookie';
 
@@ -19,11 +21,19 @@ export class S2IForm extends PureComponent {
         this.state = {
             spinner: false,
             submitting: false,
-            showType: "git_repo"
+            showType: "git_repo",
+            git_repo: "https://github.com/mondalabhishek/express-hello-world",
+            builder_image: "nodejs",
+            workspace_dir: "",
+            name: "dpg-node-hello",
         };
         this.form = React.createRef();
         this.submitForm = this.submitForm.bind(this);
         this.changeType = this.changeType.bind(this);
+        this.git_repo = React.createRef();
+        this.workspace_dir = React.createRef();
+        this.builder_image = React.createRef();
+        this.name = React.createRef();
 
     }
     componentDidMount() {
@@ -38,13 +48,47 @@ export class S2IForm extends PureComponent {
 
     }
     submitForm(event) {
-
-
+        event.preventDefault();
+        this.setState({
+            spinner: true
+        })
+        let formData = {}
+        if (this.state.showType === 'git_repo') {
+            formData = {
+                sourceLocation: this.git_repo.current.value,
+                language: this.builder_image.current.value,
+                imageName: this.name.current.value
+            }
+            buildImageByGit(formData).then((res) => {
+                this.props.history.push("/pushimage");
+            }).catch((e) => {
+                this.setState({
+                    spinner: false
+                })
+                console.log(e)
+            });
+        } else if (this.state.showType === 'workspace') {
+            formData = {
+                cluster_url: this.cluster_url.current.value,
+                token: this.token.current.value
+            }
+            buildImageByWorkspace(formData).then((res) => {
+                this.props.history.push("/pushimage");
+            }).catch((e) => {
+                this.setState({
+                    spinner: false
+                })
+                console.log(e)
+            });
+        }
     }
     render() {
         const {
             submitting,
-            showType
+            showType,
+            git_repo,
+            workspace_dir,
+            name
         } = this.state;
         return (
             <div className={`login-form`}>
@@ -87,6 +131,8 @@ export class S2IForm extends PureComponent {
                                     type={`text`}
                                     labelText={'Git Repository URL'}
                                     disabled={submitting}
+                                    ref={this.git_repo}
+                                    defaultValue={git_repo}
                                 />
                             }
                             {showType === 'workspace' &&
@@ -96,12 +142,17 @@ export class S2IForm extends PureComponent {
                                     type={`text`}
                                     labelText={'Workspace Directory'}
                                     disabled={submitting}
+                                    ref={this.workspace_dir}
+                                    defaultValue={workspace_dir}
                                 />
                             }
                             <Select className="select-field"
                                 labelText="Builder Image"
                                 id="builder_image"
-                                defaultValue="">
+                                name="builder_image"
+                                defaultValue="nodejs"
+                                ref={this.builder_image}
+                                >
                                 <SelectItem
                                     disabled
                                     hidden
@@ -119,6 +170,8 @@ export class S2IForm extends PureComponent {
                                 type={`text`}
                                 labelText={'Name'}
                                 disabled={submitting}
+                                ref={this.name}
+                                defaultValue={name}
                             />
                         </FormGroup>
                         <Button type="submit" className="some-class" >
@@ -139,4 +192,4 @@ export class S2IForm extends PureComponent {
     }
 }
 
-export default S2IForm
+export default withRouter(S2IForm)

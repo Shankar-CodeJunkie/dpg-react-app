@@ -1,27 +1,27 @@
-@import '~@carbon/type/scss/font-family';
-@import '~@carbon/type/scss/type';
-@import '~carbon-components/scss/globals/scss/spacing';
-@import '~@carbon/themes/scss/themes';
+@import "~@carbon/type/scss/font-family";
+@import "~@carbon/type/scss/type";
+@import "~carbon-components/scss/globals/scss/spacing";
+@import "~@carbon/themes/scss/themes";
 $carbon--theme: $carbon--theme--g10;
 @include carbon--theme();
 
-.outer{
+.outer {
   display: table;
   position: absolute;
   height: 100%;
   width: 100%;
-  @include carbon--breakpoint('md') {
+  @include carbon--breakpoint("md") {
     background-color: $ui-background;
   }
 }
-.middle{
+.middle {
   display: table-cell;
   vertical-align: top;
-  @include carbon--breakpoint('md') {
+  @include carbon--breakpoint("md") {
     vertical-align: middle;
   }
 }
-.inner{
+.login-inner {
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -33,41 +33,162 @@ $carbon--theme: $carbon--theme--g10;
   min-height: 338px;
   overflow: hidden;
 }
-.login-container{
+.login-container {
   // padding-top: 80px;
   // max-width: 31rem;
   height: 100%;
-  @include carbon--breakpoint('md') {
+  @include carbon--breakpoint("md") {
     margin: auto;
     //padding: 0;
   }
-  > .bx--row{
+  > .bx--row {
     height: 100%;
   }
-  .form-area{
+  .form-area {
     height: 100%;
     //padding-top: 80px;
-    @include carbon--breakpoint('md') {
+    @include carbon--breakpoint("md") {
       //padding-right: 1.5rem;
       //padding-top: 142px;
     }
-    @include carbon--breakpoint('lg') {
+    @include carbon--breakpoint("lg") {
       //padding-right: 2.5rem;
     }
   }
-  .help-link{
-    @include carbon--type-style('body-long-01');
+  .help-link {
+    @include carbon--type-style("body-long-01");
     //margin-top: $spacing-08;
     padding-top: $spacing-05;
     //border-top: 1px solid $active-ui;
   }
-  .logo{
+  .logo {
     margin-bottom: $spacing-03;
-    svg.logo{
+    svg.logo {
       fill: white;
       width: 64px;
       height: 64px;
     }
   }
+}
 
+.s2i-inner {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  // max-width: 530px;
+  max-width: 1400px;
+  display: flex;
+  width: calc(100% - 40px);
+  //padding: $carbon--spacing-05;
+  margin-bottom: 28px;
+  min-width: 320px;
+  min-height: 338px;
+  overflow: hidden;
+}
+.s2i-container {
+  // padding-top: 80px;
+  // max-width: 31rem;
+  height: 100%;
+  @include carbon--breakpoint("md") {
+    margin: auto;
+    //padding: 0;
+  }
+  > .bx--row {
+    height: 100%;
+  }
+  .form-area {
+    height: 100%;
+    //padding-top: 80px;
+    @include carbon--breakpoint("md") {
+      //padding-right: 1.5rem;
+      //padding-top: 142px;
+    }
+    @include carbon--breakpoint("lg") {
+      //padding-right: 2.5rem;
+    }
+  }
+  .help-link {
+    @include carbon--type-style("body-long-01");
+    //margin-top: $spacing-08;
+    padding-top: $spacing-05;
+    //border-top: 1px solid $active-ui;
+  }
+  .logo {
+    margin-bottom: $spacing-03;
+    svg.logo {
+      fill: white;
+      width: 64px;
+      height: 64px;
+    }
+  }
+  .info-block {
+    margin-top: 2rem;
+    .left-title{
+      margin-bottom: 2rem;
+    }
+    p{
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.pushimage-inner {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  // max-width: 530px;
+  max-width: 1400px;
+  display: flex;
+  width: calc(100% - 40px);
+  //padding: $carbon--spacing-05;
+  margin-bottom: 28px;
+  min-width: 320px;
+  min-height: 338px;
+  overflow: hidden;
+}
+.pushimage-container {
+  // padding-top: 80px;
+  // max-width: 31rem;
+  height: 100%;
+  @include carbon--breakpoint("md") {
+    margin: auto;
+    //padding: 0;
+  }
+  > .bx--row {
+    height: 100%;
+  }
+  .form-area {
+    height: 100%;
+    //padding-top: 80px;
+    @include carbon--breakpoint("md") {
+      //padding-right: 1.5rem;
+      //padding-top: 142px;
+    }
+    @include carbon--breakpoint("lg") {
+      //padding-right: 2.5rem;
+    }
+  }
+  .help-link {
+    @include carbon--type-style("body-long-01");
+    //margin-top: $spacing-08;
+    padding-top: $spacing-05;
+    //border-top: 1px solid $active-ui;
+  }
+  .logo {
+    margin-bottom: $spacing-03;
+    svg.logo {
+      fill: white;
+      width: 64px;
+      height: 64px;
+    }
+  }
+  .info-block {
+    margin-top: 2rem;
+    .left-title{
+      margin-bottom: 2rem;
+    }
+    p{
+      margin-bottom: 1rem;
+    }
+  }
 }

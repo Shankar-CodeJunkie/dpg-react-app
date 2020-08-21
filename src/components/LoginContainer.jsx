@@ -7,8 +7,7 @@ class LoginContainer extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
-            step: 1
+            loading: true
         }
     }
     render() {
@@ -16,17 +15,13 @@ class LoginContainer extends PureComponent {
         return (
             <div className={`outer`}>
                 <div className={`middle`}>
-                    <div className={`inner`}>
+                    <div className={`login-inner`}>
                         <div className={`login-container`}>
                             <Row>
                                 <Column className={`form-area`}>
                                     <LoginForm
                                         currentStep={step}
                                     />
-                                    {/* <S2IForm
-                                        currentStep={step}
-                                    /> */}
-                                    {/* <PushImageForm /> */}
                                 </Column>
                             </Row>
                         </div>
