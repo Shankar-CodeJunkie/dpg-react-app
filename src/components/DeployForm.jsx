@@ -18,7 +18,9 @@ export class DeployForm extends PureComponent {
             spinner: false,
             submitting: false,
             imageName: 'dpg-node-hello',
-            project_name: 'dpg-demo'
+            project_name: 'dpg-demo',
+            showAppURL: false,
+            appURL: ''
         };
         this.form = React.createRef();
         this.submitForm = this.submitForm.bind(this);
@@ -42,10 +44,13 @@ export class DeployForm extends PureComponent {
         }
         deploy(formData).then((res) => {
             this.setState({
-                spinner: false
+                spinner: false,
+                showAppURL: true,
+                appURL: res.appurl
             })
             // TODO - Deployed applicaton URL redirection
             // this.props.history.push("/pushimage");
+
         }).catch((e) => {
             this.setState({
                 spinner: false
@@ -56,39 +61,53 @@ export class DeployForm extends PureComponent {
     render() {
         const {
             submitting,
-            project_name
+            project_name,
+            showAppURL,
+            appURL
         } = this.state;
         return (
             <div className={`login-form`}>
-                <form
-                    name="loginForm"
-                    // ref={this.loginForm}
-                    method="POST"
-                    className={`ibm-row-form`}
-                    onSubmit={($event) => { return this.submitForm($event) }}
-                    action={this.formAction()}
-                    ref={f => (this.form = f)}
-                >
-                    <div className={`fields-container`}>
-                        <div className={`heading-container`}>
-                            <h1 className="form-heading ibm-h2">Deploy application</h1>
+                {showAppURL &&
+                    <div className={`ibm-row-form`}>
+                        <div className={`fields-container`}>
+                            <div className={`heading-container`}>
+                                <h1 className="form-heading ibm-h2">Deploy application</h1>
+                            </div>
+                            Deployed App URL : <a href={appURL} rel="noopener noreferrer" target="_blank">{appURL}</a>
                         </div>
-                        <FormGroup legendText="">
-                            <TextInput
-                                id={`project_name`}
-                                name={`project_name`}
-                                type={`text`}
-                                labelText={'Project Name'}
-                                disabled={submitting}
-                                ref={this.project_name}
-                                defaultValue={project_name}
-                            />
-                        </FormGroup>
-                        <Button type="submit" className="some-class" >
-                            Push
-                        </Button>
                     </div>
-                </form>
+                }
+                {!showAppURL &&
+                    <form
+                        name="loginForm"
+                        // ref={this.loginForm}
+                        method="POST"
+                        className={`ibm-row-form`}
+                        onSubmit={($event) => { return this.submitForm($event) }}
+                        action={this.formAction()}
+                        ref={f => (this.form = f)}
+                    >
+                        <div className={`fields-container`}>
+                            <div className={`heading-container`}>
+                                <h1 className="form-heading ibm-h2">Deploy application</h1>
+                            </div>
+                            <FormGroup legendText="">
+                                <TextInput
+                                    id={`project_name`}
+                                    name={`project_name`}
+                                    type={`text`}
+                                    labelText={'Project Name'}
+                                    disabled={submitting}
+                                    ref={this.project_name}
+                                    defaultValue={project_name}
+                                />
+                            </FormGroup>
+                            <Button type="submit" className="some-class" >
+                                Push
+                        </Button>
+                        </div>
+                    </form>
+                }
                 {
                     this.state.spinner &&
                     <Loading

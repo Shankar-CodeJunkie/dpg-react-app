@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
+// const API_DOMAIN = 'http://localhost:3000';
 
 export function loginByCred(formData) {
     return new Promise(function (resolve, reject) {
@@ -113,13 +114,13 @@ export function deploy(formData) {
     return new Promise(function (resolve, reject) {
         axios({
             method: 'POST',
-            url: API_DOMAIN + '/deployPacakge',
+            url: API_DOMAIN + '/deployPackage',
             data: {
                 "imageName": formData.imageName,
                 "project": formData.project
             },
         }).then(res => {
-            if (res.data && res.data.result && res.data.result === 'Package push successful') {
+            if (res.data && res.data.result && res.data.result === 'App Deployed') {
                 resolve(res.data)
             } else {
                 reject(res.data)
