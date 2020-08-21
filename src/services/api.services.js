@@ -108,3 +108,24 @@ export function pushImage(formData) {
         })
     })
 }
+
+export function deploy(formData) {
+    return new Promise(function (resolve, reject) {
+        axios({
+            method: 'POST',
+            url: API_DOMAIN + '/deployPacakge',
+            data: {
+                "imageName": formData.imageName,
+                "project": formData.project
+            },
+        }).then(res => {
+            if (res.data && res.data.result && res.data.result === 'Package push successful') {
+                resolve(res.data)
+            } else {
+                reject(res.data)
+            }
+        }).catch(error => {
+            reject({ error });
+        })
+    })
+}

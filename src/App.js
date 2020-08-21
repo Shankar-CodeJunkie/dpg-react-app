@@ -11,14 +11,12 @@ import { Loading } from 'carbon-components';
 import S2IContainer from './components/S2IContainer';
 import PushImageContainer from './components/PushImageContainer';
 import history from "./history";
+import DeployContainer from './components/DeployContainer';
 function App() {
   return (
     <Router history={history}>
       <div className="app-container">
         <Suspense fallback={<Loading />}>
-          {/* <LoginContainer /> */}
-          {/* <S2IContainer /> */}
-          {/* <PushImageContainer /> */}
           <Switch>
             <Route exact path="/">
               <LoginContainer />
@@ -28,6 +26,9 @@ function App() {
             </Route>
             <Route exact path="/pushimage">
               <PushImageContainer />
+            </Route>
+            <Route exact path="/deploy">
+              <DeployContainer />
             </Route>
           </Switch>
         </Suspense>

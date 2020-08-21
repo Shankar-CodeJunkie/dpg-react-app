@@ -7,11 +7,11 @@ import {
 } from 'carbon-components-react';
 import './scss/login-form.scss'
 import { withRouter } from 'react-router-dom';
-import { pushImage } from '../services/api.services';
+import { deploy } from '../services/api.services';
 
 // import Cookies from 'universal-cookie';
 
-export class PushImageForm extends PureComponent {
+export class DeployForm extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,11 +40,12 @@ export class PushImageForm extends PureComponent {
             imageName: this.state.imageName,
             project: this.project_name.current.value
         }
-        pushImage(formData).then((res) => {
+        deploy(formData).then((res) => {
             this.setState({
                 spinner: false
             })
-            this.props.history.push("/deploy");
+            // TODO - Deployed applicaton URL redirection
+            // this.props.history.push("/pushimage");
         }).catch((e) => {
             this.setState({
                 spinner: false
@@ -70,7 +71,7 @@ export class PushImageForm extends PureComponent {
                 >
                     <div className={`fields-container`}>
                         <div className={`heading-container`}>
-                            <h1 className="form-heading ibm-h2">Push image to OCP Registry</h1>
+                            <h1 className="form-heading ibm-h2">Deploy application</h1>
                         </div>
                         <FormGroup legendText="">
                             <TextInput
@@ -101,4 +102,4 @@ export class PushImageForm extends PureComponent {
     }
 }
 
-export default withRouter(PushImageForm)
+export default withRouter(DeployForm)
