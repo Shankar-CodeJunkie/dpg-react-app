@@ -9,8 +9,6 @@ import './scss/login-form.scss'
 import { withRouter } from 'react-router-dom';
 import { deploy } from '../services/api.services';
 
-// import Cookies from 'universal-cookie';
-
 export class DeployForm extends PureComponent {
     constructor(props) {
         super(props);
@@ -19,7 +17,7 @@ export class DeployForm extends PureComponent {
             submitting: false,
             imageName: 'dpg-node-hello',
             project_name: 'dpg-demo',
-            showAppURL: false,
+            showAppURL: true,
             appURL: ''
         };
         this.form = React.createRef();
@@ -27,8 +25,7 @@ export class DeployForm extends PureComponent {
         this.project_name = React.createRef();
     }
     componentDidMount() {
-        // this.preFillData();
-        // this.focusOnInput();
+        
     }
     formAction() {
 
@@ -48,7 +45,6 @@ export class DeployForm extends PureComponent {
                 showAppURL: true,
                 appURL: res.appurl
             })
-            // TODO - Deployed applicaton URL redirection
             // this.props.history.push("/pushimage");
 
         }).catch((e) => {
@@ -73,6 +69,7 @@ export class DeployForm extends PureComponent {
                             <div className={`heading-container`}>
                                 <h1 className="form-heading ibm-h2">Deploy application</h1>
                             </div>
+                            <p className="deploy-title">Might take few minutes for the URL to get activated, click the link after few minutes.</p>
                             Deployed App URL : <a href={appURL} rel="noopener noreferrer" target="_blank">{appURL}</a>
                         </div>
                     </div>
@@ -80,7 +77,6 @@ export class DeployForm extends PureComponent {
                 {!showAppURL &&
                     <form
                         name="loginForm"
-                        // ref={this.loginForm}
                         method="POST"
                         className={`ibm-row-form`}
                         onSubmit={($event) => { return this.submitForm($event) }}
@@ -103,7 +99,7 @@ export class DeployForm extends PureComponent {
                                 />
                             </FormGroup>
                             <Button type="submit" className="some-class" >
-                                Push
+                                Deploy
                         </Button>
                         </div>
                     </form>

@@ -13,8 +13,6 @@ import {
 import './scss/login-form.scss'
 import { buildImageByWorkspace, buildImageByGit } from '../services/api.services';
 
-// import Cookies from 'universal-cookie';
-
 export class S2IForm extends PureComponent {
     constructor(props) {
         super(props);
@@ -94,7 +92,6 @@ export class S2IForm extends PureComponent {
             <div className={`login-form`}>
                 <form
                     name="loginForm"
-                    // ref={this.loginForm}
                     method="POST"
                     className={`ibm-row-form`}
                     onSubmit={($event) => { return this.submitForm($event) }}

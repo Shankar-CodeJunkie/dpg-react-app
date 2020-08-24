@@ -9,8 +9,6 @@ import './scss/login-form.scss'
 import { withRouter } from 'react-router-dom';
 import { pushImage } from '../services/api.services';
 
-// import Cookies from 'universal-cookie';
-
 export class PushImageForm extends PureComponent {
     constructor(props) {
         super(props);
@@ -25,8 +23,7 @@ export class PushImageForm extends PureComponent {
         this.project_name = React.createRef();
     }
     componentDidMount() {
-        // this.preFillData();
-        // this.focusOnInput();
+        
     }
     formAction() {
 
@@ -61,7 +58,6 @@ export class PushImageForm extends PureComponent {
             <div className={`login-form`}>
                 <form
                     name="loginForm"
-                    // ref={this.loginForm}
                     method="POST"
                     className={`ibm-row-form`}
                     onSubmit={($event) => { return this.submitForm($event) }}

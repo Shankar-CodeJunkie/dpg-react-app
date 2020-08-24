@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { withRouter } from 'react-router-dom';
 import {
     Button,
     RadioButton,
@@ -8,9 +9,6 @@ import {
     RadioButtonGroup
 } from 'carbon-components-react';
 import './scss/login-form.scss'
-// import { useHistory } from 'react-router-dom';
-// import Cookies from 'universal-cookie';
-import { withRouter } from 'react-router-dom';
 import { loginByCred, loginByToken } from '../services/api.services';
 export class LoginForm extends PureComponent {
     constructor(props) {
@@ -101,7 +99,6 @@ export class LoginForm extends PureComponent {
             <div className={`login-form`}>
                 <form
                     name="loginForm"
-                    // ref={this.loginForm}
                     method="POST"
                     className={`ibm-row-form`}
                     onSubmit={($event) => { return this.submitForm($event) }}

@@ -80,4 +80,8 @@
   .body-01{
     @include carbon--type-style('body-long-01');
   }
+  .deploy-title{
+    @include carbon--type-style('productive-heading-01');
+    margin-bottom: 1rem;
+  }
 }

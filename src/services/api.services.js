@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const API_DOMAIN = process.env.REACT_APP_API_DOMAIN;
-// const API_DOMAIN = 'http://localhost:3000';
 
 export function loginByCred(formData) {
     return new Promise(function (resolve, reject) {
@@ -52,9 +51,9 @@ export function buildImageByGit(formData) {
             method: 'POST',
             url: API_DOMAIN + '/packageCode',
             data: {
-                "language": formData.language, //"nodejs",
-                "sourceLocation": formData.sourceLocation, //"https://github.com/mondalabhishek/express-hello-world",
-                "imageName": formData.imageName //"dpg-node-hello"
+                "language": formData.language,
+                "sourceLocation": formData.sourceLocation,
+                "imageName": formData.imageName
             },
         }).then(res => {
             if (res.data && res.data.result && res.data.result === 'Build Success') {
@@ -73,9 +72,9 @@ export function buildImageByWorkspace(formData) {
             method: 'POST',
             url: API_DOMAIN + '/packageCode',
             data: {
-                "language": formData.language, //"nodejs",
-                "sourceLocation": formData.sourceLocation, //"https://github.com/mondalabhishek/express-hello-world",
-                "imageName": formData.imageName //"dpg-node-hello"
+                "language": formData.language,
+                "sourceLocation": formData.sourceLocation,
+                "imageName": formData.imageName
             },
         }).then(res => {
             if (res.data && res.data.result && res.data.result === 'Success') {

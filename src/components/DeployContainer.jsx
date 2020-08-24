@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import {Column, Row} from 'carbon-components-react';
+import { Column, Row } from 'carbon-components-react';
 import './scss/login-container.scss'
 import { DeployForm } from './DeployForm';
 
@@ -17,18 +17,15 @@ class DeployContainer extends PureComponent {
                     <div className={`pushimage-inner`}>
                         <div className={`pushimage-container`}>
                             <Row>
-                            <Column>
+                                <Column>
                                     <div className="info-block">
-                                        <h2 className="left-title">How to Create an S2I Builder Image</h2>
+                                        <h2 className="left-title">Deploying an application on OpenShift</h2>
                                         <p>
-                                            Source-to-Image (S2I) is a toolkit and workflow for building reproducible container images from source code. S2I produces ready-to-run images by injecting source code into a container image and letting the container prepare that source code for execution.
+                                            For more information refer - <a rel="noopener noreferrer" target="_blank" href="https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/creating-applications-using-cli.html">OpenShift - Create Application using CLI</a>
                                         </p>
+                                        <p>Explore Code Patterns - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/technologies/containers/patterns/deploy-to-openshift-4-redhat-universal-base-image/">Deploy to OpenShift 4</a></p>
                                         <p>
-                                            For more information on S2I refer - <a rel="noopener noreferrer" target="_blank" href="https://github.com/openshift/source-to-image">https://github.com/openshift/source-to-image</a>
-                                        </p>
-                                        <p>Try out IBM Open Labs for Hands-on experience - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/openlabs/openshift">IBM Open Labs for Openshift</a></p>
-                                        <p>
-                                            Explore Code patterns on S2I - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/patterns/app-modernization-s2i-openshift/">https://developer.ibm.com/patterns/app-modernization-s2i-openshift</a>
+                                            Explore Code Patterns - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/tutorials/deploy-python-app-to-openshift-cluster-source-to-image/">Deploy Python App to OpenShift</a>
                                         </p>
                                     </div>
                                 </Column>
