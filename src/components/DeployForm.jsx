@@ -25,7 +25,7 @@ export class DeployForm extends PureComponent {
         this.project_name = React.createRef();
     }
     componentDidMount() {
-        
+
     }
     formAction() {
 
@@ -67,10 +67,19 @@ export class DeployForm extends PureComponent {
                     <div className={`ibm-row-form`}>
                         <div className={`fields-container`}>
                             <div className={`heading-container`}>
-                                <h1 className="form-heading ibm-h2">Deploy application</h1>
+                                {showAppURL &&
+                                    <h1 className="form-heading ibm-h2">Application Deployed</h1>
+                                }
+                                {!showAppURL &&
+                                    <h1 className="form-heading ibm-h2">Deploy application</h1>
+                                }
                             </div>
                             <p className="deploy-title">Might take few minutes for the URL to get activated, click the link after few minutes.</p>
-                            Deployed App URL : <a href={appURL} rel="noopener noreferrer" target="_blank">{appURL}</a>
+                            <p className="deploy-url">
+                                <span className="deploy-url-label">
+                                    Deployed App URL
+                                </span><br /><a href={appURL} rel="noopener noreferrer" target="_blank">https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/creating-applications-using-cli.html{appURL}</a>
+                            </p>
                         </div>
                     </div>
                 }

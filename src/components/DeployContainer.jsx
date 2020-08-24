@@ -23,10 +23,8 @@ class DeployContainer extends PureComponent {
                                         <p>
                                             For more information refer - <a rel="noopener noreferrer" target="_blank" href="https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/creating-applications-using-cli.html">OpenShift - Create Application using CLI</a>
                                         </p>
-                                        <p>Explore Code Patterns - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/technologies/containers/patterns/deploy-to-openshift-4-redhat-universal-base-image/">Deploy to OpenShift 4</a></p>
-                                        <p>
-                                            Explore Code Patterns - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/tutorials/deploy-python-app-to-openshift-cluster-source-to-image/">Deploy Python App to OpenShift</a>
-                                        </p>
+                                        <p>Explore Code Patterns<br/><a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/technologies/containers/patterns/deploy-to-openshift-4-redhat-universal-base-image/">Deploy to OpenShift 4</a><br />
+                                            <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/tutorials/deploy-python-app-to-openshift-cluster-source-to-image/">Deploy Python App to OpenShift</a></p>
                                     </div>
                                 </Column>
                                 <Column className={`form-area`}>

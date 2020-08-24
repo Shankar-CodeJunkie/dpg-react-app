@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import {Column, Row} from 'carbon-components-react';
+import { Column, Row } from 'carbon-components-react';
 import PushImageForm from './PushImageForm';
 import './scss/login-container.scss'
 
@@ -17,18 +17,11 @@ class PushImageContainer extends PureComponent {
                     <div className={`pushimage-inner`}>
                         <div className={`pushimage-container`}>
                             <Row>
-                            <Column>
+                                <Column>
                                     <div className="info-block">
-                                        <h2 className="left-title">How to Create an S2I Builder Image</h2>
+                                        <h2 className="left-title">OpenShift Container Registry (OCR)</h2>
                                         <p>
-                                            Source-to-Image (S2I) is a toolkit and workflow for building reproducible container images from source code. S2I produces ready-to-run images by injecting source code into a container image and letting the container prepare that source code for execution.
-                                        </p>
-                                        <p>
-                                            For more information on S2I refer - <a rel="noopener noreferrer" target="_blank" href="https://github.com/openshift/source-to-image">https://github.com/openshift/source-to-image</a>
-                                        </p>
-                                        <p>Try out IBM Open Labs for Hands-on experience - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/openlabs/openshift">IBM Open Labs for Openshift</a></p>
-                                        <p>
-                                            Explore Code patterns on S2I - <a rel="noopener noreferrer" target="_blank" href="https://developer.ibm.com/patterns/app-modernization-s2i-openshift/">https://developer.ibm.com/patterns/app-modernization-s2i-openshift</a>
+                                            OpenShift Container Platform provides an integrated container registry called OpenShift Container Registry (OCR) that adds the ability to automatically provision new image repositories on demand. This provides users with a built-in location for their application builds to push the resulting images.
                                         </p>
                                     </div>
                                 </Column>

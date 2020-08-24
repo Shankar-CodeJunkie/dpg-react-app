@@ -149,7 +149,7 @@ export class S2IForm extends PureComponent {
                                 name="builder_image"
                                 defaultValue="nodejs"
                                 ref={this.builder_image}
-                                >
+                            >
                                 <SelectItem
                                     disabled
                                     hidden
@@ -158,6 +158,14 @@ export class S2IForm extends PureComponent {
                                 />
                                 <SelectItem value="java" text="Java" />
                                 <SelectItem value="nodejs" text="NodeJS" />
+                                <SelectItem value="dotnet" text="Dotnet" />
+                                <SelectItem value="golang" text="Golang" />
+                                <SelectItem value="httpd" text="Httpd" />
+                                <SelectItem value="nginx" text="Nginx" />
+                                <SelectItem value="perl" text="Perl" />
+                                <SelectItem value="php" text="PHP" />
+                                <SelectItem value="python" text="Python" />
+                                <SelectItem value="ruby" text="Ruby" />
 
                             </Select>
 
