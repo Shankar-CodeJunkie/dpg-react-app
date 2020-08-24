@@ -17,7 +17,7 @@ export class DeployForm extends PureComponent {
             submitting: false,
             imageName: 'dpg-node-hello',
             project_name: 'dpg-demo',
-            showAppURL: true,
+            showAppURL: false,
             appURL: ''
         };
         this.form = React.createRef();
