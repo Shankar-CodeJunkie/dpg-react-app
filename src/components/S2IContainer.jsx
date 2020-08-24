@@ -19,7 +19,7 @@ class S2IContainer extends PureComponent {
                             <Row>
                                 <Column>
                                     <div className="info-block">
-                                        <h2 className="left-title">How to Create an S2I Builder Image</h2>
+                                        <h2 className="left-title">Source-To-Image (S2I)</h2>
                                         <p>
                                             Source-to-Image (S2I) is a toolkit and workflow for building reproducible container images from source code. S2I produces ready-to-run images by injecting source code into a container image and letting the container prepare that source code for execution.
                                         </p>
