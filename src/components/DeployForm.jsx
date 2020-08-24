@@ -3,7 +3,8 @@ import {
     Button,
     TextInput,
     Loading,
-    FormGroup
+    FormGroup,
+    Tooltip
 } from 'carbon-components-react';
 import './scss/login-form.scss'
 import { withRouter } from 'react-router-dom';
@@ -67,19 +68,16 @@ export class DeployForm extends PureComponent {
                     <div className={`ibm-row-form`}>
                         <div className={`fields-container`}>
                             <div className={`heading-container`}>
-                                {showAppURL &&
-                                    <h1 className="form-heading ibm-h2">Application Deployed</h1>
-                                }
-                                {!showAppURL &&
-                                    <h1 className="form-heading ibm-h2">Deploy application</h1>
-                                }
+                                <h1 className="form-heading ibm-h2">Application Deployed</h1>
                             </div>
-                            <p className="deploy-title">Might take few minutes for the URL to get activated, click the link after few minutes.</p>
-                            <p className="deploy-url">
-                                <span className="deploy-url-label">
-                                    Deployed App URL
-                                </span><br /><a href={appURL} rel="noopener noreferrer" target="_blank">{appURL}</a>
-                            </p>
+                            <div className="deploy-url">
+                                <div className="deploy-url-label">
+                                    <div className="deploy-app-title">Deployed App URL</div>
+                                    <Tooltip>
+                                        Might take few minutes for the URL to get activated, click the link after few minutes.
+                                    </Tooltip>
+                                </div><a href={appURL} rel="noopener noreferrer" target="_blank">{appURL}</a>
+                            </div>
                         </div>
                     </div>
                 }
