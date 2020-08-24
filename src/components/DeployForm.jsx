@@ -78,7 +78,7 @@ export class DeployForm extends PureComponent {
                             <p className="deploy-url">
                                 <span className="deploy-url-label">
                                     Deployed App URL
-                                </span><br /><a href={appURL} rel="noopener noreferrer" target="_blank">https://docs.openshift.com/container-platform/4.5/applications/application_life_cycle_management/creating-applications-using-cli.html{appURL}</a>
+                                </span><br /><a href={appURL} rel="noopener noreferrer" target="_blank">{appURL}</a>
                             </p>
                         </div>
                     </div>
